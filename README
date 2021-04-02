@@ -1,0 +1,34 @@
+As pointed in the task, USD should be used as base currency but free subscription plan allows only use EUR as one
+
+The bot supports three commands
+Arguments to the commands are passed together with the command in one row
+
+1. /list
+    It makes request to exchange rate service https://exchangeratesapi.io/v1/latest?access_key=key&base=EUR
+    When data is received, it checks for if response is success
+    Next, bot caches the data
+    Update interval is specified in file config.py
+
+2. /exchange amount CURRENCY
+    Exchanges from the first currency(EUR) into the second one
+    exchange endpoints are not free of the service, so I exchanged it alone
+    ex. /exchange 10 UAH (will produce 10 * UAH rate)
+
+3. /history CURRENCY
+   Creates bar chart showing exchange rate between base currency(EUR) and CURRENCY
+   Bot uses API https://quickchart.io/ to draw a bar chart
+
+
+I could not create popup window to show error messages
+
+
+To run the bot do the following steps:
+   1. get access_token on exchangeratesapi.io 
+   2. get bot_token from telegram bot father
+   3. write the tokens into config.py
+   4. python3 -m venv venv
+   5. source venv/bin/activate
+   6. pip3 install -r requirements.txt
+   7. python3 bot.py
+
+Go to telegram and send the commands to the bot
